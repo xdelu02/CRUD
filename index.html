@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Impiegati</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./js/script.js"></script>
+    <script src="./js/ui.js"></script>
+  </head>
+  
+  <body>
+    <div class="container">
+      <h2>Manage employees</h2>
+      <table id="emloyeesTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+      <button id="add" class="btn" onclick="showDivEmployee()">ADD</button>
+      <button id="delete" class="btn" onclick="deleteRows()">DELETE</button>
+      
+      <div id="divAddEmployee" style="visibility: hidden;">
+        <label for="name">Name:</label>
+        <input type="text" id="inputName">
+        <label for="lastName">Last name:</label>
+        <input type="text" id="inputLastName">
+        <label for="email">Email:</label>
+        <input type="text" id="inputEmail">
+        <label for="phone">Phone:</label>
+        <input type="text" id="inputPhone">
+        <button onclick="addEmployee()"></button>
+      </div>
+  </body>
+</html>

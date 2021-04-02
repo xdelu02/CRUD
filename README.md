@@ -4,6 +4,8 @@ cd CRUD <br>
 npm install <br>
 ng serve -o <br>
 
+# COSA MANCA
+  Implementazione di POST E UPDATE
 
 # ManageEmployees
 

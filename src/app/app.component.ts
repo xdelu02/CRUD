@@ -19,9 +19,11 @@ export class AppComponent implements OnInit{
   employees: Employee[] = [];
 
   ngOnInit(): void {
+     //get di tutti gli impiegati
     this.rs.getEmployees().subscribe(result => this.employees = result);
   }
 
+   //Funzione che aggiunge all'array "rowToDelete" le righe delle tabelle (quindi gli impiegati) da cancellare.
   checkedRow(e){
     let id = e.target.id;
     if(e.target.checked) {
@@ -32,7 +34,7 @@ export class AppComponent implements OnInit{
     }
     console.log(this.rowToDelete);
   }
-
+ //Funzione che rimuove le righe della tabella (gli impiegati)
   deleteEmployees() {
     for (let i = 0; i < this.rowToDelete.length; i++) {
       this.rs.removeEmployees(this.rowToDelete[i]).subscribe(() => true);

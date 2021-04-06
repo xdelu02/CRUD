@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Employee from './Employee';
-import { Observable, throwError } from "rxjs";
+import { Observable } from "rxjs";
 import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class RestService {
     }
 
     apiURL = "http://localhost:8080/api/tutorial/1.0/employees"
+    
     constructor(private http: HttpClient) {
     }
 
@@ -28,6 +29,22 @@ export class RestService {
     
     removeEmployees(id:number){
         return this.http.delete<Employee>(this.apiURL+'/'+ id, this.httpOptions)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
+    updateEmployees(id:number, employee:Employee): Observable<Employee> {
+        return this.http.put<Employee>(this.apiURL + '/' + id, JSON.stringify(employee), this.httpOptions)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
+    createEmployees(employee:Employee): Observable<Employee> {
+        return this.http.post<Employee>(this.apiURL, JSON.stringify(employee), this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)

@@ -7,6 +7,6 @@ ng serve -o <br>
 # COSA MANCA
   Implementazione di UPDATE
 
-# ManageEmployees
+<hr>
 
 Progetto generato con [Angular CLI](https://github.com/angular/angular-cli) versione 11.2.6.

@@ -2,7 +2,7 @@
 git clone https://github.com/xdelu02/CRUD/ <br>
 cd CRUD <br>
 npm install <br>
-ng serve -o <br>
+npm start <br>
 
 # COSA MANCA
   Implementazione di UPDATE

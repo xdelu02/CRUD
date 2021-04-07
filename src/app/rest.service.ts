@@ -14,7 +14,7 @@ export class RestService {
         headers: new HttpHeaders({'Content-Type':'application/json'})
     }
 
-    apiURL = "http://localhost:8080/api/tutorial/1.0/employees"
+    apiURL = "http://localhost:4200/api/tutorial/1.0/employees"
     
     constructor(private http: HttpClient) {
     }

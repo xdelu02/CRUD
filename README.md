@@ -4,9 +4,6 @@ cd CRUD <br>
 npm install <br>
 npm start <br>
 
-# COSA MANCA
-  Implementazione di UPDATE
-
 <hr>
 
 Progetto generato con [Angular CLI](https://github.com/angular/angular-cli) versione 11.2.6.

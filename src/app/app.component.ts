@@ -14,6 +14,18 @@ export class AppComponent implements OnInit{
 
   rowToDelete: number[] = [];
   employees: Employee[] = [];
+  isEditEnable : boolean = true;
+  enableEdit = false;
+  enableEditIndex = null;
+  
+  editedEmployee: Employee = {
+    employeeId: 0,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: ""
+  };
+
 
   constructor(private rs : RestService) {}
 
@@ -40,7 +52,16 @@ export class AppComponent implements OnInit{
     location.reload();
   }
 
-  //funzione che aggiunge un'impiegato
+  enableEditMethod(employee) {
+    this.editedEmployee = employee;
+    this.enableEdit = true;
+    this.enableEditIndex = employee.employeeId;
+  }
+  
+  update_employee(employeeToEdit) {
+    this.editedEmployee.employeeId = employeeToEdit;
+    this.rs.updateEmployees(this.editedEmployee).subscribe(() => location.reload());
+  }
 
 
 }

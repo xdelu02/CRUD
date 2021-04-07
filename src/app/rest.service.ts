@@ -35,8 +35,8 @@ export class RestService {
             )
     }
 
-    updateEmployees(id:number, employee:Employee): Observable<Employee> {
-        return this.http.put<Employee>(this.apiURL + '/' + id, JSON.stringify(employee), this.httpOptions)
+    updateEmployees(employee:Employee): Observable<Employee> {
+        return this.http.put<Employee>(this.apiURL + '/' + employee.employeeId, JSON.stringify(employee), this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)

@@ -28,9 +28,13 @@ export class ModalComponent {
   open(content) {
     this.modalService.open(content);
   }
-
+  //funzione che aggiunge un impiegato nel database
   addEmployee() {
-    this.rs.createEmployees(this.employee).subscribe(() => location.reload());
+    this.rs.getEmployees().subscribe(data => {
+      let id = data[data.length-1].employeeId;
+      this.employee.employeeId = ++id;
+      this.rs.createEmployees(this.employee).subscribe(() => location.reload());
+    });
   }
 
 }

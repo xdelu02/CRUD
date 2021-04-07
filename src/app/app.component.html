@@ -20,11 +20,27 @@
     <tbody>
       <tr *ngFor="let employee of employees ; async" [attr.id]="employee.employeeId">
         <td><input type="checkbox" [attr.id]="employee.employeeId" (change)="checkedRow($event)"></td>
-        <td>{{ employee.firstName }}</td>
-        <td>{{ employee.lastName }}</td>
-        <td>{{ employee.email }}</td>
-        <td>{{ employee.phone }}</td>
-        <td><img src="../assets/images/pencil.png"></td>
+        <td>
+          <input type="text" *ngIf="enableEdit && enableEditIndex == employee.employeeId" [(ngModel)]="editedEmployee.firstName">
+          <span *ngIf="!(enableEdit && (enableEditIndex == employee.employeeId))">{{ employee.firstName }}</span>
+        </td>
+        <td>
+          <input type="text" *ngIf="enableEdit && enableEditIndex == employee.employeeId" [(ngModel)]="editedEmployee.lastName">
+          <span  *ngIf="!(enableEdit && (enableEditIndex == employee.employeeId))">{{ employee.lastName }}</span>
+        </td>
+        <td>
+          <input type="text" *ngIf="enableEdit && enableEditIndex == employee.employeeId" [(ngModel)]="editedEmployee.email">
+          <span  *ngIf="!(enableEdit && (enableEditIndex == employee.employeeId))">{{ employee.email }}</span>
+        </td>
+        <td>
+          <input type="text" *ngIf="enableEdit && enableEditIndex == employee.employeeId" [(ngModel)]="editedEmployee.phone">
+          <span  *ngIf="!(enableEdit && (enableEditIndex == employee.employeeId))">{{ employee.phone }}</span>
+        </td>
+        <td>
+          <img src="../assets/images/pencil.png" *ngIf="!enableEdit" (click)="enableEditMethod(employee)">
+          <img src="../assets/images/close.png" *ngIf="enableEdit && enableEditIndex == employee.employeeId" (click)="enableEdit=false" ng-click="cancel()">
+          <img src="../assets/images/check.png" *ngIf="enableEdit && enableEditIndex == employee.employeeId" (click)="update_employee(employee.employeeId)">
+        </td>
       </tr>
     </tbody>
   </table>
